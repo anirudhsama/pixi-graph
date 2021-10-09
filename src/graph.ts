@@ -179,11 +179,12 @@ export class PixiGraph<
       screenHeight: this.container.clientHeight,
       interaction: this.app.renderer.plugins.interaction,
     })
-      .drag()
+      .drag({ factor: 1.2 })
       .pinch()
-      .wheel()
-      .decelerate()
-      .clampZoom({ maxScale: 1 });
+      .wheel({ percent: 1 })
+      .decelerate({ friction: 0.97, bounce: 0.8, minSpeed: 0.1 })
+      .clampZoom({ maxScale: 1.5, minScale: 0.05 });
+
     this.app.stage.addChild(this.viewport);
 
     // create layers
