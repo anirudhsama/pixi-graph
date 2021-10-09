@@ -103,13 +103,12 @@ export class PixiEdge extends TypedEmitter<PixiEdgeEvents> {
       targetNodePosition.x - sourceNodePosition.x,
       targetNodePosition.y - sourceNodePosition.y
     );
+
     this.edgeGfx.position.copyFrom(position);
     this.edgeGfx.rotation = rotation;
     this.edgeGfx.height = length;
 
     this.edgeLabelGfx.position.copyFrom(position);
-    this.edgeLabelGfx.rotation = rotation;
-    // this.edgeLabelGfx.height = 20;
   }
 
   updateStyle(edgeStyle: EdgeStyle, textureCache: TextureCache) {

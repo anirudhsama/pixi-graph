@@ -32,8 +32,6 @@ export function updateEdgeLabelStyle(
   nodeStyle: EdgeStyle,
   textureCache: TextureCache
 ) {
-  const edgeOuterSize = nodeStyle.width;
-
   const nodeLabelTextTextureKey = [
     NODE_LABEL_TEXT,
     nodeStyle.label.fontFamily,
@@ -55,20 +53,14 @@ export function updateEdgeLabelStyle(
   ) as Sprite;
 
   nodeLabelBackground.y =
-    edgeOuterSize +
-    (nodeLabelTextTexture.height + nodeStyle.label.padding * 2) / 2;
+    (nodeLabelTextTexture.height + nodeStyle.label.padding * 2) / 2 -
+    nodeLabelTextTexture.height / 2;
 
   nodeLabelBackground.width =
     nodeLabelTextTexture.width + nodeStyle.label.padding * 2;
 
   nodeLabelBackground.height =
     nodeLabelTextTexture.height + nodeStyle.label.padding * 2;
-
-  // nodeLabelBackground.y = edgeOuterSize + nodeLabelTextTexture.height;
-
-  // nodeLabelBackground.width = nodeLabelTextTexture.width;
-
-  // nodeLabelBackground.height = nodeLabelTextTexture.height + 10;
 
   [nodeLabelBackground.tint, nodeLabelBackground.alpha] = colorToPixi(
     nodeStyle.label.backgroundColor
@@ -79,10 +71,8 @@ export function updateEdgeLabelStyle(
   nodeLabelText.texture = nodeLabelTextTexture;
 
   nodeLabelText.y =
-    edgeOuterSize +
-    (nodeLabelTextTexture.height + nodeStyle.label.padding * 2) / 2;
-
-  // nodeLabelText.y = edgeOuterSize + nodeLabelTextTexture.height;
+    (nodeLabelTextTexture.height + nodeStyle.label.padding * 2) / 2 -
+    nodeLabelTextTexture.height / 2;
 
   [nodeLabelText.tint, nodeLabelText.alpha] = colorToPixi(
     nodeStyle.label.color
