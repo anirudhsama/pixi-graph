@@ -36,8 +36,6 @@ export interface GraphStyle {
       fontFamily: string;
       fontSize: number;
       color: string;
-      backgroundColor: string;
-      padding: number;
     };
   };
 }

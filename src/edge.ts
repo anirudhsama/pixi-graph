@@ -44,7 +44,7 @@ export class PixiEdge extends TypedEmitter<PixiEdgeEvents> {
   createEdge() {
     const edgeGfx = new Container();
     edgeGfx.interactive = true;
-    edgeGfx.buttonMode = true;
+    edgeGfx.buttonMode = false;
     edgeGfx.on("mousemove", (event: InteractionEvent) =>
       this.emit("mousemove", event.data.originalEvent as MouseEvent)
     );
@@ -66,23 +66,8 @@ export class PixiEdge extends TypedEmitter<PixiEdgeEvents> {
 
   private createEdgeLabel() {
     const edgeLabelGfx = new Container();
-    edgeLabelGfx.interactive = true;
-    edgeLabelGfx.buttonMode = true;
-    edgeLabelGfx.on("mousemove", (event: InteractionEvent) =>
-      this.emit("mousemove", event.data.originalEvent as MouseEvent)
-    );
-    edgeLabelGfx.on("mouseover", (event: InteractionEvent) =>
-      this.emit("mouseover", event.data.originalEvent as MouseEvent)
-    );
-    edgeLabelGfx.on("mouseout", (event: InteractionEvent) =>
-      this.emit("mouseout", event.data.originalEvent as MouseEvent)
-    );
-    edgeLabelGfx.on("mousedown", (event: InteractionEvent) =>
-      this.emit("mousedown", event.data.originalEvent as MouseEvent)
-    );
-    edgeLabelGfx.on("mouseup", (event: InteractionEvent) =>
-      this.emit("mouseup", event.data.originalEvent as MouseEvent)
-    );
+    edgeLabelGfx.interactive = false;
+    edgeLabelGfx.buttonMode = false;
     createEdgeLabel(edgeLabelGfx);
     return edgeLabelGfx;
   }

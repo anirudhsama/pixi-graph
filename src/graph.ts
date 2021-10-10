@@ -59,8 +59,6 @@ const DEFAULT_STYLE: GraphStyleDefinition = {
       fontSize: 12,
       content: "",
       color: "#333333",
-      backgroundColor: "rgba(0, 0, 0, 0)",
-      padding: 4,
     },
   },
 };
