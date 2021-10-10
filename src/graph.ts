@@ -74,6 +74,7 @@ export interface GraphOptions<
   style: GraphStyleDefinition<NodeAttributes, EdgeAttributes>;
   hoverStyle: GraphStyleDefinition<NodeAttributes, EdgeAttributes>;
   resources?: IAddOptions[];
+  fixedNodes?: boolean;
 }
 
 interface PixiGraphEvents {
@@ -100,6 +101,7 @@ export class PixiGraph<
   style: GraphStyleDefinition<NodeAttributes, EdgeAttributes>;
   hoverStyle: GraphStyleDefinition<NodeAttributes, EdgeAttributes>;
   resources?: IAddOptions[];
+  fixedNodes?: boolean;
 
   private app: Application;
   private textureCache: TextureCache;
@@ -147,6 +149,7 @@ export class PixiGraph<
     this.style = options.style;
     this.hoverStyle = options.hoverStyle;
     this.resources = options.resources;
+    this.fixedNodes = options.fixedNodes ? true : false;
 
     if (!(this.container instanceof HTMLElement)) {
       throw new Error("container should be a HTMLElement");
@@ -576,7 +579,11 @@ export class PixiGraph<
 
     node.on("mousedown", (event: MouseEvent) => {
       this.mousedownNodeKey = nodeKey;
-      this.enableNodeDragging();
+
+      if (!this.fixedNodes) {
+        this.enableNodeDragging();
+      }
+
       this.emit("nodeMousedown", event, nodeKey);
     });
 
