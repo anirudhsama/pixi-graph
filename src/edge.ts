@@ -45,19 +45,19 @@ export class PixiEdge extends TypedEmitter<PixiEdgeEvents> {
     const edgeGfx = new Container();
     edgeGfx.interactive = true;
     edgeGfx.buttonMode = false;
-    edgeGfx.on("mousemove", (event: InteractionEvent) =>
+    edgeGfx.on("pointermove", (event: InteractionEvent) =>
       this.emit("mousemove", event.data.originalEvent as MouseEvent)
     );
-    edgeGfx.on("mouseover", (event: InteractionEvent) =>
+    edgeGfx.on("pointerover", (event: InteractionEvent) =>
       this.emit("mouseover", event.data.originalEvent as MouseEvent)
     );
-    edgeGfx.on("mouseout", (event: InteractionEvent) =>
+    edgeGfx.on("pointerout", (event: InteractionEvent) =>
       this.emit("mouseout", event.data.originalEvent as MouseEvent)
     );
-    edgeGfx.on("mousedown", (event: InteractionEvent) =>
+    edgeGfx.on("pointerdown", (event: InteractionEvent) =>
       this.emit("mousedown", event.data.originalEvent as MouseEvent)
     );
-    edgeGfx.on("mouseup", (event: InteractionEvent) =>
+    edgeGfx.on("pointerup", (event: InteractionEvent) =>
       this.emit("mouseup", event.data.originalEvent as MouseEvent)
     );
     createEdge(edgeGfx);
